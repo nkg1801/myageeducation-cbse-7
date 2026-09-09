@@ -1,0 +1,13 @@
+package com.myAgeEducation.cbseClass7.maths.decimals;
+
+public enum DecimalArithmeticQuestionType
+{
+    DECIMAL_MULTIPLY_WHOLE,
+    WHOLE_MULTIPLY_DECIMAL,
+    DECIMAL_DIVIDE_10,
+    DECIMAL_DIVIDE_100,
+    MISSING_DIVISOR,
+    MISSING_MULTIPLIER,
+    PLACE_VALUE_MULTIPLICATION,
+    WORD_PROBLEM_MULTIPLICATION
+}

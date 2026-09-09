@@ -1,0 +1,153 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:background="#FFFFFF"
+                android:padding="10dip">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/adView"
+        android:layout_marginBottom="10dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/textViewInputNumbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:text="Input the required numbers"/>
+
+            <EditText
+                android:id="@+id/editTextNumber1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/textViewInputNumbers"
+                android:inputType="number"
+                android:hint="Number 1"/>
+
+            <EditText
+                android:id="@+id/editTextNumber2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/editTextNumber1"
+                android:inputType="number"
+                android:hint="Number 2"/>
+
+            <EditText
+                android:id="@+id/editTextNumber3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/editTextNumber2"
+                android:inputType="number"
+                android:visibility="gone"
+                android:hint="Number 3"/>
+
+            <EditText
+                android:id="@+id/editTextNumber4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/editTextNumber3"
+                android:inputType="number"
+                android:visibility="gone"
+                android:hint="Number 4"/>
+
+            <EditText
+                android:id="@+id/editTextNumber5"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/editTextNumber4"
+                android:inputType="number"
+                android:hint="Number 5"
+                android:visibility="gone"/>
+
+            <ImageButton
+                android:id="@+id/imageButtonAddNumber"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/editTextNumber5"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_add_circle_green_24dp"
+                android:onClick="onClickAddNumber"
+                />
+
+            <ImageButton
+                android:id="@+id/imageButtonAddNumberGrey"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/editTextNumber5"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_add_circle_grey_24dp"
+                android:visibility="invisible"/>
+
+            <TextView
+                android:id="@+id/textViewResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/editTextNumber5"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:textColor="#0000FF"
+                android:visibility="invisible"
+                android:text="HCF of [2,4,6,8] is: "/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewResult"
+                android:layout_centerHorizontal="true">
+            <Button
+                android:id="@+id/buttonFindHcf"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:padding="0dp"
+                android:text="Find HCF"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/rounded_button_dark_grey"
+                android:onClick="onClickButtonFindHcf"
+                />
+
+            <Button
+                android:id="@+id/buttonFindLcm"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_toRightOf="@+id/buttonFindHcf"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:padding="0dp"
+                android:text="Find LCM"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/rounded_button_dark_grey"
+                android:onClick="onClickButtonFindLcm"
+                />
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="@string/admob_banner_adunitid">
+    </com.google.android.gms.ads.AdView>
+</RelativeLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorLightBlack">#535353</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorChapterHighlightColor">#FFD201</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="rounded_textview_color">#AAB7B8</color>
+    <color name="rounded_button_backcolor">#D35400</color>
+    <color name="color1">#FFA00A</color>
+    <color name="tag_line_text_color">#b0ab98</color>
+    <color name="colorGrey">#b0ab98</color>
+    <color name="colorGreen">#00FF00</color>
+    <color name="colorLightYellow">#ffff66</color>
+    <color name="yellowGreen">#9ACD32</color>
+    <color name="videoButtonColor">#DEB887</color>
+    <color name="mcqButtonColor">#F4A460</color>
+</resources>

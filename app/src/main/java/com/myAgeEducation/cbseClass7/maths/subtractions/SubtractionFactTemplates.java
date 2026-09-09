@@ -1,0 +1,44 @@
+package com.myAgeEducation.cbseClass7.maths.subtractions;
+
+public class SubtractionFactTemplates
+{
+    public static final SubtractionFactTemplate[] SUCCESSOR =
+            {
+                    new SubtractionFactTemplate(
+                            SubtractionFactType.SUCCESSOR,
+                            "Write the successor of %1$s."),
+
+                    new SubtractionFactTemplate(
+                            SubtractionFactType.SUCCESSOR,
+                            "What comes immediately after %1$s?")
+            };
+
+    public static final SubtractionFactTemplate[] PREDECESSOR =
+            {
+                    new SubtractionFactTemplate(
+                            SubtractionFactType.PREDECESSOR,
+                            "Write the predecessor of %1$s."),
+
+                    new SubtractionFactTemplate(
+                            SubtractionFactType.PREDECESSOR,
+                            "What comes immediately before %1$s?")
+            };
+
+    public static final SubtractionFactTemplate[] LARGEST_4_DIGIT_SUCCESSOR =
+            {
+                    new SubtractionFactTemplate(
+                            SubtractionFactType.LARGEST_4_DIGIT_SUCCESSOR,
+                            "The successor of the ______ largest 4-digit number is the smallest 5-digit number.")
+            };
+
+    public static final SubtractionFactTemplate[] PLACE_VALUE_DIFFERENCE =
+            {
+                    new SubtractionFactTemplate(
+                            SubtractionFactType.PLACE_VALUE_DIFFERENCE,
+                            "Find the difference between the place value of %1$s and the place value of %2$s in the numeral %3$s."),
+
+                    new SubtractionFactTemplate(
+                            SubtractionFactType.PLACE_VALUE_DIFFERENCE,
+                            "Find the difference between the place values of two %1$ss in %2$s.")
+            };
+}

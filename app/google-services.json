@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1117778841",
+    "firebase_url": "https://cbse-7-bba00.firebaseio.com",
+    "project_id": "cbse-7-bba00",
+    "storage_bucket": "cbse-7-bba00.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1117778841:android:86134f10d6911a0fe6d908",
+        "android_client_info": {
+          "package_name": "com.myAgeEducation.cbseClass7"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1117778841-n9no8qvb12brfqs8psd05l4t0j4pmekj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARH2oJSLAkCn4cCzurRpRSUPX7krmAvsk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1117778841-n9no8qvb12brfqs8psd05l4t0j4pmekj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

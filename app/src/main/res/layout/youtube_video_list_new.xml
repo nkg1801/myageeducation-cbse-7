@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="#000000"
+                xmlns:auto="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+            <ImageView
+                android:id="@+id/youtubePlayerView1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:scaleType="center"
+                android:adjustViewBounds="true"/>
+
+            <TextView
+                android:id="@+id/textVideoDescription1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:textColor="@color/colorWhite"
+                android:padding="5dp"
+                android:text="Unlock this set by watching the adjoining Video Ad"
+                android:visibility="visible"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+            <ImageView
+                android:id="@+id/youtubePlayerView2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"/>
+
+            <TextView
+                android:id="@+id/textVideoDescription2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp"
+                android:padding="5dp"
+                android:text="Unlock this set by watching the adjoining Video Ad"
+                android:visibility="visible"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+            <ImageView
+                android:id="@+id/youtubePlayerView3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"/>
+
+            <TextView
+                android:id="@+id/textVideoDescription3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp"
+                android:padding="5dp"
+                android:text="Unlock this set by watching the adjoining Video Ad"
+                android:visibility="visible"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+            <ImageView
+                android:id="@+id/youtubePlayerView4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"/>
+
+            <TextView
+                android:id="@+id/textVideoDescription4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp"
+                android:padding="5dp"
+                android:text="Unlock this set by watching the adjoining Video Ad"
+                android:visibility="visible"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+            <ImageView
+                android:id="@+id/youtubePlayerView5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"/>
+
+            <TextView
+                android:id="@+id/textVideoDescription5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:textColor="@color/colorGrey"
+                android:textSize="12sp"
+                android:padding="5dp"
+                android:text="Unlock this set by watching the adjoining Video Ad"
+                android:visibility="visible"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+            <ImageView
+                android:id="@+id/youtubePlayerView6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"/>
+
+            <TextView
+                android:id="@+id/textVideoDescription6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:textColor="@color/colorGrey"
+                android:textSize="12sp"
+                android:padding="5dp"
+                android:text="Unlock this set by watching the adjoining Video Ad"
+                android:visibility="visible"/>
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

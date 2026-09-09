@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    namespace 'com.myAgeEducation.cbseClass7'
+    compileSdk 37
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    /*
+        Change History:
+	    20: New SDK
+            19: Quereka lite ad integrated
+            1.18: dynamic getmore implemented
+            1.17: Cuemaths videos
+            1.16: Ad policy violation - for 2 Native ads on the question sets page (No of ads on Question Sets reduced to 1 from 2)
+            1.15: Firebase database separated. Class-7 how has its own firebase project
+            1.14: a. Limit of 9 sets removed
+                  b. Native Ads
+    */
+
+    defaultConfig {
+        applicationId "com.myAgeEducation.cbseClass7"
+        minSdkVersion 26
+        targetSdk 37
+        multiDexEnabled true
+        versionCode 20
+        versionName "1.20"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("../MySchoolMyTest_1.jks")
+            storePassword "duliajan"
+            keyAlias "myschoolmytest"
+            keyPassword "duliajan"
+        }
+    }
+
+    buildTypes {
+
+        release {
+            signingConfig signingConfigs.release
+        }
+    }
+
+    lint {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation project(":cbsecommon_aar-release")
+    implementation project(':MathView')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'com.google.android.material:material:1.14.0'
+    implementation 'androidx.recyclerview:recyclerview:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+    implementation 'androidx.legacy:legacy-support-v13:1.0.0'
+    implementation 'com.google.android.gms:play-services-ads:25.4.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.google.firebase:firebase-database:22.0.1'
+    implementation 'com.google.firebase:firebase-auth:24.1.0'
+    implementation 'com.squareup.picasso:picasso:2.71828' // do not change this, it creates some problems - Nand
+}
+
+android {
+    packaging {
+        resources {
+            excludes += 'META-INF/LICENSE'
+            excludes += 'META-INF/NOTICE'
+        }
+    }
+}

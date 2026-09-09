@@ -1,0 +1,4 @@
+include ':app', ':cbsecommon_aar-release'
+include ':MathView'
+//include ':app',':cbsecommon'
+//project(':cbsecommon').projectDir = new File(settingsDir, '../cbsecommon')
