@@ -206,7 +206,7 @@ public class QuestionSets extends Activity{
 
     private void insertAdsInMenuItems() {
         hideProgressBar();
-        if (mNativeAds.size() <= 0) {
+        if (mNativeAds.isEmpty()) {
             recyclerViewAdapter = new RecyclerViewAdapterForQuestionSets(this, sets, setNames, rewardList, setResult);
             recyclerView.setAdapter(recyclerViewAdapter);
             recyclerView.setVisibility(View.VISIBLE);
@@ -731,7 +731,7 @@ public class QuestionSets extends Activity{
     {
         if(Util.Subject.equalsIgnoreCase("maths"))
         {
-            launchQuestionLoader();
+            launchQuestionLoader(questionSet);
             //openTestActivity(1);
         }
         else {
@@ -739,10 +739,11 @@ public class QuestionSets extends Activity{
         }
     }
 
-    private void launchQuestionLoader()
+    private void launchQuestionLoader(int setNumber)
     {
         Intent intent = new Intent();
         intent.putExtra("chapter_number", _chapterNumber);
+        intent.putExtra("set_number", setNumber);
         intent.setClassName(Util.PACKAGE_NAME, Util.PACKAGE_NAME + ".QuestionLoaderActivity");
         startActivityForResult(intent, REQ_Y);
     }

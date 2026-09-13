@@ -199,6 +199,15 @@ public class RecyclerViewAdapterForQuestionSets extends RecyclerView.Adapter<Rec
                     }
                 });
 
+                defaultViewHolder.textViewUnlockMessage.setOnClickListener(v -> {
+                    String unlockText = defaultViewHolder.textViewUnlockMessage.getText().toString().toLowerCase();
+                    if (unlockText.contains("unlock")) {
+                        Util.displayAlert("Please unlock this Question Set by watching the Ad Video", "Question Set Locked", _context);
+                    } else {
+                        ((QuestionSets) _context).getQuestions(position + 1);
+                    }
+                });
+
                 defaultViewHolder.imageViewLockOpen.setOnClickListener(v -> {
                     String unlockText = defaultViewHolder.textViewUnlockMessage.getText().toString().toLowerCase();
                     if (unlockText.contains("unlock")) {

@@ -25,9 +25,6 @@ public class Util
 	static ArrayList<Question> allQuestions = new ArrayList<>();
 	static ArrayList<Question> revisionQuestions = new ArrayList<>();
 	public static boolean IsVideoAvailable = false;
-
-    //public static ArrayList questionNumbers = new ArrayList();
-
     static String UserUid = "";
     static String ClassName = "class-7";
     public static String SyllabusAndGrade = "cbse-7";
@@ -48,11 +45,6 @@ public class Util
     public static String subjectChapters = "";
     static final String TEST_CHAPTER_WISE = "chapter_wise";
 
-    ///================ Contest related============================================
-    static int TestTimeOut = 15; // timeout in minute
-    static boolean IsContestTest = false;
-    //================== contest related data ends here===============================
-
     public static String AdDataRoot = SubjectRoot + "/extras/ads/activeAd";
 
     public static final String PACKAGE_NAME = "com.myAgeEducation.cbseClass7";
@@ -61,9 +53,9 @@ public class Util
     public static String Subject = "";
     static boolean isFreeApp = true;
 
-    static String mathChapters = "Integers;Fractions and Decimals;Data Handling;Simple Equations;Lines and Angles;The Triangles and its Properties;Congruence of Triangles;Comparing Quantities;Rational Numbers;Practical Geometry;Perimeter and Area;Algebraic Expressions;Exponents and Powers;Symmetry;Visualising Solid Shapes";
+    static String mathChapters = "Integers;Fractions and Decimals;Data Handling;Simple Equations;Lines and Angles;The Triangles and its Properties;Congruence of Triangles;Comparing Quantities;Rational Numbers;Practical Geometry;Perimeter and Area;Algebraic Expressions;Exponents and Powers;Symmetry;Visualising Solid Shapes;LCM and HCF";
     static String scienceChapters = "Nutrition in Plants;Nutrition in Animals;Fibre to Fabric;Chemical and Chemical Changes;Acids, Bases and Salts;Heat and Temperature;Climate and Adaption;Soil;Respiration in Organisms;Transportation of Substances;Reproduction in Plants;Time and Motion;Electric Current and its Effects;Wind and Storm;Light;Water;Forests: Our Lifeline;Wastewater Management";
-    static String mathSets = "10;10;10;10;10;10;10;10;10;10;10;10;10;10;10"; // each chapter is set to 10 sets of questions
+    static String mathSets = "10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10"; // each chapter is set to 10 sets of questions
     static String scienceSets = "";
     static String computerSets = "";
     static String gkSets = "";
@@ -91,13 +83,6 @@ public class Util
     {
         Date date = new Date();
         SimpleDateFormat monthFormat = new SimpleDateFormat("dd-MMM-yyyy hh:mm a");
-        return monthFormat.format(date);
-    }
-
-    public static String getCurrentTime()
-    {
-        Date date = new Date();
-        SimpleDateFormat monthFormat = new SimpleDateFormat("hh:mm a");
         return monthFormat.format(date);
     }
 

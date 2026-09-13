@@ -16,7 +16,12 @@ import android.widget.TextView;
 import com.myAgeEducation.cbseClass7.maths.LineAndAngle.AngleQuestionGenerator;
 import com.myAgeEducation.cbseClass7.maths.LineAndAngle.LineAndAngleArithmeticQuestionGenerator;
 import com.myAgeEducation.cbseClass7.maths.LineAndAngle.LineAndAngleQuestionGenerator;
+import com.myAgeEducation.cbseClass7.maths.divisibility.DivisibilityQuestionGenerator;
+import com.myAgeEducation.cbseClass7.maths.factors.FactorQuestionGenerator;
 import com.myAgeEducation.cbseClass7.maths.geometricalideas.BasicGeometricalIdeasQuestionGenerator;
+import com.myAgeEducation.cbseClass7.maths.hcf.HcfQuestionGenerator;
+import com.myAgeEducation.cbseClass7.maths.lcm.LcmQuestionGenerator;
+import com.myAgeEducation.cbseClass7.maths.multiples.MultipleQuestionGenerator;
 import com.myAgeEducation.cbseClass7.maths.practicalgeometry.PracticalGeometryQuestionGenerator;
 import com.myAgeEducation.cbseClass7.maths.charts.BarChartQuestionGenerator;
 import com.myAgeEducation.cbseClass7.maths.circlegraph.CircleGraphQuestionGenerator;
@@ -41,6 +46,7 @@ import com.myAgeEducation.cbseClass7.maths.exponents.ExponentsQuestionGenerator;
 import com.myAgeEducation.cbseClass7.maths.integers.IntegerQuestionGenerator;
 import com.myAgeEducation.cbseClass7.maths.percentages.PercentageQuestionGenerator;
 import com.myAgeEducation.cbseClass7.maths.perimeterarea.PerimeterAreaQuestionGenerator;
+import com.myAgeEducation.cbseClass7.maths.primecomposite.PrimeCompositeQuestionGenerator;
 import com.myAgeEducation.cbseClass7.maths.rationalnumbers.RationalNumberQuestionGenerator;
 import com.myAgeEducation.cbseClass7.maths.simpleequations.SimpleEquationQuestionGenerator;
 import com.myAgeEducation.cbseClass7.maths.triangles.TrianglePropertyQuestionGenerator;
@@ -49,9 +55,9 @@ import com.myAgeEducation.cbseClass7.maths.symmetry.SymmetryQuestionGenerator;
 import com.myAgeEducation.cbseClass7.maths.ratioandproportion.ComparingQuantitiesQuestionGenerator;
 import com.myAgeEducation.cbseClass7.maths.tabularquestions.TableQuestionGenerator;
 import com.myAgeEducation.cbseClass7.maths.visualizingsolidshapes.VisualizingSolidShapesQuestionGenerator;
-
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class QuestionLoaderActivity extends Activity {
     private volatile boolean generationFinished = false;
@@ -102,8 +108,7 @@ public class QuestionLoaderActivity extends Activity {
                 if (duration < 2000) {
                     try {
                         Thread.sleep(2000 - duration);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                    } catch (InterruptedException ignored) {
                     }
                 }
             } catch (Exception e) {
@@ -111,7 +116,7 @@ public class QuestionLoaderActivity extends Activity {
             } finally {
                 if(!Util.IsUnderAutomaticTest) {
                     runOnUiThread(() -> {
-                        openTestActivity(1);
+                        openTestActivity(_setNumber);
                         finish();
                     });
                 }
@@ -124,13 +129,6 @@ public class QuestionLoaderActivity extends Activity {
     private void readBundle()
     {
         Bundle bundle = getIntent().getExtras();
-        //questionCount = bundle.getInt("questionCount");
-        //isRevision = bundle.getString("isRevision");
-        //isExit = bundle.getString("isExit");
-        //reward = bundle.getString("reward");
-        //rewardPoints = bundle.getString("points");
-        //_isRecoverMode = bundle.getBoolean("recover_mode");
-        //_questionSet = bundle.getString("question_set");
         if (bundle != null) {
             _setNumber = bundle.getInt("set_number");
             _chapterNumber = bundle.getInt("chapter_number");
@@ -282,10 +280,16 @@ public class QuestionLoaderActivity extends Activity {
                 Log.d("QuestionLoader", "Chapter 14 took: " + (System.currentTimeMillis() - start) + "ms");
                 break;
 
-            default:
+            case 15:
                 start = System.currentTimeMillis();
                 updateLoadingText("Loading questions for Chapter #15");
                 addQuestionsForChapterFifteen();
+                Log.d("QuestionLoader", "Chapter 15 took: " + (System.currentTimeMillis() - start) + "ms");
+
+            default:
+                start = System.currentTimeMillis();
+                updateLoadingText("Loading questions for Chapter #15");
+                addQuestionsForChapterSixteen();
                 Log.d("QuestionLoader", "Chapter 15 took: " + (System.currentTimeMillis() - start) + "ms");
         }
     }
@@ -305,7 +309,7 @@ public class QuestionLoaderActivity extends Activity {
         }
     }
 
-    // not fully updated for class 7 .. add more if possible
+    // not fully updated for class 7. add more if possible
     private void addQuestionsForChapterTwo() {
         int chapterNumber = 2;
         String chapterName = "Fractions and Decimals";
@@ -366,7 +370,7 @@ public class QuestionLoaderActivity extends Activity {
         }
     }
 
-    // updated for class 7.. add more if possible for mean, average types etc
+    // updated for class 7. add more if possible for mean, average types etc
     private void addQuestionsForChapterThree()
     {
         int chapterNumber = 3;
@@ -379,7 +383,7 @@ public class QuestionLoaderActivity extends Activity {
         for(int i = 0; i < 20; i++) {
             randomNumber = RANDOM.nextInt(100);
 
-            if(randomNumber < 90) // 90%  // this is specific to class 7.. all below are for revisions from earlier classes
+            if(randomNumber < 90) // 90%  // this is specific to class 7. all below are for revisions from earlier classes
             {
                 question = DataHandlingArithmeticQuestionGenerator.generateQuestion();
 
@@ -426,7 +430,7 @@ public class QuestionLoaderActivity extends Activity {
         }
     }
 
-    // updated for class 7.. add more types if possible
+    // updated for class 7. add more types if possible
     private void addQuestionsForChapterFive()
     {
         int chapterNumber = 5;
@@ -612,13 +616,43 @@ public class QuestionLoaderActivity extends Activity {
         }
     }
 
+    private void addQuestionsForChapterSixteen()
+    {
+        int chapterNumber = 16;
+        String chapterName = "LCM and HCF";
+        final Random RANDOM = new Random();
+        int randomNumber;
+
+        for(int i=0; i < 20; i++) {
+            Question question;
+            randomNumber = RANDOM.nextInt(100);
+            if (randomNumber < 15) {
+                question = LcmQuestionGenerator.generateQuestion();
+            } else if (randomNumber < 30) {
+                question = HcfQuestionGenerator.generateQuestion();
+            } else if (randomNumber < 45) {
+                question = PrimeCompositeQuestionGenerator.generateQuestion();
+            } else if (randomNumber < 60) {
+                question = DivisibilityQuestionGenerator.generateQuestion();
+            } else if (randomNumber < 80) {
+                question = MultipleQuestionGenerator.generateQuestion();
+            } else {
+                question = FactorQuestionGenerator.generateQuestion();
+            }
+
+            question.setChapter(chapterNumber);
+            question.setChapterName(chapterName);
+            Util.allQuestions.add(question);
+        }
+    }
+
     private void setHeaderImage()
     {
         ImageView img = findViewById(R.id.imgEducation);
-        String imageName = IMAGES[RANDOM.nextInt(IMAGES.length)];
-        int resourceIdentifier = getResources().getIdentifier(imageName, "drawable", getPackageName());
+        int resourceIdentifier = HEADER_IMAGES.get(ThreadLocalRandom.current().nextInt(HEADER_IMAGES.size()));
         img.setImageResource(resourceIdentifier);
-        Size size = getDrawableSize(this, imageName);
+
+        Size size = getDrawableSize(this, resourceIdentifier);
 
         int IMAGE_WIDTH = 600;
         float factor = (float) IMAGE_WIDTH / size.getWidth();
@@ -627,8 +661,7 @@ public class QuestionLoaderActivity extends Activity {
         setImageViewWidthHeight(img, width/2, height/2);
     }
 
-    public Size getDrawableSize(Context context, String drawableName) {
-        int resId = context.getResources().getIdentifier(drawableName,"drawable",context.getPackageName());
+    public Size getDrawableSize(Context context, int resId) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeResource(context.getResources(),resId,options);
@@ -646,19 +679,19 @@ public class QuestionLoaderActivity extends Activity {
 
     private static final Random RANDOM = new Random();
 
-    private static final String[] IMAGES = {
-            "thinking_owl",
-            "blue_bird",
-            "ant_thinking",
-            "boy_thinking",
-            "girl_thinking",
-            "tortoise",
-            "snail_thinking",
-            "slate_thinking",
-            "school_bag_thinking",
-            "puppy",
-            "protector_thinking",
-            "plus_thinking",
-            "pie_thinking"
-    };
+    private static final List<Integer> HEADER_IMAGES = List.of(
+            R.drawable.thinking_owl,
+            R.drawable.blue_bird,
+            R.drawable.ant_thinking,
+            R.drawable.boy_thinking,
+            R.drawable.girl_thinking,
+            R.drawable.tortoise,
+            R.drawable.snail_thinking,
+            R.drawable.slate_thinking,
+            R.drawable.school_bag_thinking,
+            R.drawable.puppy,
+            R.drawable.protector_thinking,
+            R.drawable.plus_thinking,
+            R.drawable.pie_thinking
+    );
 }

@@ -106,7 +106,7 @@ public class FractionSeriesQuestionGenerator
 
             for (int j = 0; j < series.length; j++)
             {
-                sb.append("\\(\\frac{").append(series[j].numerator).append("}{").append(series[j].denominator).append("}\\)");
+                sb.append(series[j].numerator).append("/").append(series[j].denominator);
 
                 if (j != series.length - 1)
                 {

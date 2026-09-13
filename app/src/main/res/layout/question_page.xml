@@ -45,7 +45,7 @@
             android:background="@drawable/bg_gradient_green"
             >
 
-            <io.github.kexanie.library.MathView
+            <!--<io.github.kexanie.library.MathView
                 android:id="@+id/webViewQuestionText"
                 android:background="@drawable/bg_gradient_green"
                 android:padding="10dp"
@@ -61,7 +61,16 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginRight="5dp"
-                />
+                />-->
+
+            <com.myAgeEducation.cbseClass7.MathTextView.MathTextView
+                android:id="@+id/webViewQuestionText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp" />
         </RelativeLayout>
 
             <ImageView
@@ -106,24 +115,17 @@
                             android:onClick="onClickOptions"
                             android:tag="option1"/>
 
-                        <io.github.kexanie.library.MathView
-                            android:id="@+id/textViewOption1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:width="0dp"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:paddingEnd="5dp"
-                            android:paddingStart="5dp"
-                            android:text="@string/sample_text"
-                            android:gravity="center_vertical"
-                            android:layout_marginStart="@dimen/answer_option_margin_left"
-                            android:layout_marginEnd="@dimen/answer_option_margin_right"
-                            android:layout_marginTop="@dimen/answer_option_margin_top"
-                            android:layout_marginBottom="@dimen/answer_option_margin_bottom"
-                            android:onClick="onClickButtonOption1"
-                            android:visibility="visible"
-                            auto:engine="KaTeX"/>
+                    <com.myAgeEducation.cbseClass7.MathTextView.MathTextView
+                        android:id="@+id/textViewOption1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:onClick="onClickButtonOption1"
+                        />
                 </TableRow>
 
                 <TableRow
@@ -143,24 +145,17 @@
                             android:tag="option1"
                             android:text=""/>
 
-                        <io.github.kexanie.library.MathView
-                            android:id="@+id/textViewOption2"
-                            android:text="@string/sample_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/answer_option_margin_left"
-                            android:layout_marginEnd="@dimen/answer_option_margin_right"
-                            android:layout_marginTop="@dimen/answer_option_margin_top"
-                            android:layout_marginBottom="@dimen/answer_option_margin_bottom"
-                            android:width="0dp"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:paddingEnd="5dp"
-                            android:paddingStart="5dp"
-                            android:gravity="center_vertical"
-                            android:textAllCaps="false"
-                            android:onClick="onClickButtonOption2"
-                            auto:engine="KaTeX"/>
+                    <com.myAgeEducation.cbseClass7.MathTextView.MathTextView
+                        android:id="@+id/textViewOption2"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:onClick="onClickButtonOption2"
+                        />
                 </TableRow>
 
                 <TableRow
@@ -172,8 +167,6 @@
                     android:layout_marginTop="@dimen/answer_option_row_margin_top"
                     android:background="@drawable/bg_gradient_red_rectangle">
 
-
-
                         <RadioButton
                             android:id="@+id/radioOption3"
                             android:layout_width="wrap_content"
@@ -182,24 +175,17 @@
                             android:tag="option1"
                             android:text=""/>
 
-                        <io.github.kexanie.library.MathView
-                            android:id="@+id/textViewOption3"
-                            android:text="@string/sample_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/answer_option_margin_left"
-                            android:layout_marginEnd="@dimen/answer_option_margin_right"
-                            android:layout_marginTop="@dimen/answer_option_margin_top"
-                            android:layout_marginBottom="@dimen/answer_option_margin_bottom"
-                            android:width="0dp"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:paddingEnd="5dp"
-                            android:paddingStart="5dp"
-                            android:gravity="center_vertical"
-                            android:textAllCaps="false"
-                            android:onClick="onClickButtonOption2"
-                            auto:engine="KaTeX"/>
+                    <com.myAgeEducation.cbseClass7.MathTextView.MathTextView
+                        android:id="@+id/textViewOption3"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:onClick="onClickButtonOption3"
+                        />
 
                 </TableRow>
 
@@ -212,8 +198,6 @@
                     android:layout_marginTop="@dimen/answer_option_row_margin_top"
                     android:background="@drawable/bg_gradient_red_rectangle">
 
-
-
                         <RadioButton
                             android:id="@+id/radioOption4"
                             android:layout_width="wrap_content"
@@ -222,24 +206,17 @@
                             android:tag="option1"
                             android:text=""/>
 
-                        <io.github.kexanie.library.MathView
-                            android:id="@+id/textViewOption4"
-                            android:text="@string/sample_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/answer_option_margin_left"
-                            android:layout_marginEnd="@dimen/answer_option_margin_right"
-                            android:layout_marginTop="@dimen/answer_option_margin_top"
-                            android:layout_marginBottom="@dimen/answer_option_margin_bottom"
-                            android:width="0dp"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:paddingEnd="5dp"
-                            android:paddingStart="5dp"
-                            android:gravity="center_vertical"
-                            android:textAllCaps="false"
-                            android:onClick="onClickButtonOption2"
-                            auto:engine="KaTeX"/>
+                    <com.myAgeEducation.cbseClass7.MathTextView.MathTextView
+                        android:id="@+id/textViewOption4"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:onClick="onClickButtonOption4"
+                        />
                 </TableRow>
             </TableLayout>
 

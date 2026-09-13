@@ -11,7 +11,8 @@ android {
 
     /*
         Change History:
-	    20: New SDK
+	        21: AI generated questions - must publish asap
+	        20: New SDK
             19: Quereka lite ad integrated
             1.18: dynamic getmore implemented
             1.17: Cuemaths videos
@@ -26,8 +27,19 @@ android {
         minSdkVersion 26
         targetSdk 37
         multiDexEnabled true
-        versionCode 20
-        versionName "1.20"
+        versionCode 21
+        versionName "1.21"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled = true
+
+            proguardFiles(
+                    getDefaultProguardFile('proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
+            )
+        }
     }
 
     signingConfigs {
@@ -40,7 +52,6 @@ android {
     }
 
     buildTypes {
-
         release {
             signingConfig signingConfigs.release
         }
@@ -49,29 +60,31 @@ android {
     lint {
         abortOnError false
     }
-}
 
-dependencies {
-    implementation project(":cbsecommon_aar-release")
-    implementation project(':MathView')
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.7.1'
-    implementation 'com.google.android.material:material:1.14.0'
-    implementation 'androidx.recyclerview:recyclerview:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
-    implementation 'androidx.legacy:legacy-support-v13:1.0.0'
-    implementation 'com.google.android.gms:play-services-ads:25.4.0'
-    implementation 'androidx.multidex:multidex:2.0.1'
-    implementation 'com.google.firebase:firebase-database:22.0.1'
-    implementation 'com.google.firebase:firebase-auth:24.1.0'
-    implementation 'com.squareup.picasso:picasso:2.71828' // do not change this, it creates some problems - Nand
-}
 
-android {
-    packaging {
-        resources {
-            excludes += 'META-INF/LICENSE'
-            excludes += 'META-INF/NOTICE'
+    dependencies {
+        implementation project(":cbsecommon_aar-release")
+        implementation project(':MathView')
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        implementation 'androidx.appcompat:appcompat:1.8.0'
+        implementation 'com.google.android.material:material:1.14.0'
+        implementation 'androidx.recyclerview:recyclerview:1.4.0'
+        implementation 'androidx.constraintlayout:constraintlayout:2.2.2'
+        implementation 'androidx.legacy:legacy-support-v13:1.0.0'
+        implementation 'com.google.android.gms:play-services-ads:25.4.0'
+        implementation 'androidx.multidex:multidex:2.0.1'
+        implementation 'com.google.firebase:firebase-database:22.0.1'
+        implementation 'com.google.firebase:firebase-auth:24.2.0'
+        implementation 'com.squareup.picasso:picasso:2.71828'
+        // do not change this, it creates some problems - Nand
+    }
+
+    android {
+        packaging {
+            resources {
+                excludes += 'META-INF/LICENSE'
+                excludes += 'META-INF/NOTICE'
+            }
         }
     }
 }

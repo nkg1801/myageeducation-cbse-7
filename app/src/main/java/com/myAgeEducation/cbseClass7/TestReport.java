@@ -11,6 +11,8 @@ import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Objects;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -48,22 +50,24 @@ public class TestReport extends Activity
 		_sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 		Bundle bundle = getIntent().getExtras();
-		isRevision = bundle.getString("isRevision");
-		reward = bundle.getString("reward");
+        assert bundle != null;
+        isRevision = bundle.getString("isRevision");reward = bundle.getString("reward");
 		rewardPoints = bundle.getString("points");
 		int chapterNumber = bundle.getInt("chapter_number");
 		int setNumber = bundle.getInt("set_number");
 		
 		try
 		{
-			correctAnsCount = Integer.parseInt(bundle.getString("correct_ans_count"));
-			questionCount = Integer.parseInt(bundle.getString("questionCount"));
+			correctAnsCount = Integer.parseInt(Objects.requireNonNull(bundle.getString("correct_ans_count")));
+			questionCount = Integer.parseInt(Objects.requireNonNull(bundle.getString("questionCount")));
 
 			String result = correctAnsCount + "/" + questionCount;
 
-			SharedPreferences.Editor prefEdit = _sharedPreferences.edit();
-			prefEdit.putString(Util.Subject.toLowerCase() + "_" + chapterNumber + "_" + setNumber, result);
-			prefEdit.apply();
+			if(!isRevision.equalsIgnoreCase("true")) {
+				SharedPreferences.Editor prefEdit = _sharedPreferences.edit();
+				prefEdit.putString(Util.Subject.toLowerCase() + "_" + chapterNumber + "_" + setNumber, result);
+				prefEdit.apply();
+			}
 		}
 		catch(NumberFormatException nfe)
 		{
@@ -80,10 +84,9 @@ public class TestReport extends Activity
 
 		displayScore();
 
-		if(Util.revisionQuestions.size() == 0 || Util.IsContestTest)
+		if(Util.revisionQuestions.isEmpty())
 		{
 			findViewById(R.id.buttonStartRevision).setVisibility(View.GONE);
-			Util.IsContestTest = false;
 
 			try
 			{
@@ -398,6 +401,8 @@ public class TestReport extends Activity
 		  testPage.putExtra("isRevision", "true");
 		  testPage.putExtra("isExit", "false");
 		  testPage.putExtra("reward", reward);
+		  testPage.putExtra("chapter_number", getIntent().getIntExtra("chapter_number", 0));
+		  testPage.putExtra("set_number", getIntent().getIntExtra("set_number", 0));
 
 		  startActivity(testPage);
 		  finish();

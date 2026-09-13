@@ -225,4 +225,9 @@
         <item>From the beginning</item>
     </string-array>
     <string name="title_activity_question_sets">QuestionSets</string>
+    <string name="watch_video">Watch video</string>
+    <string name="na">NA</string>
+    <string name="marks">Marks</string>
+    <string name="unlock_this_set_by_watching_the_adjoining_video_ad">Unlock this set by watching the adjoining Video Ad</string>
+    <string name="question_set_1">Question Set #1</string>
 </resources>

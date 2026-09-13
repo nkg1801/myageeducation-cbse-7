@@ -1,6 +1,5 @@
 package com.myAgeEducation.cbseClass7;
 
-import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -23,7 +22,6 @@ import android.widget.RadioButton;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import android.graphics.Color;
-
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -34,6 +32,7 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import androidx.annotation.NonNull;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.myAgeEducation.cbseClass7.MathTextView.MathTextView;
 
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
@@ -45,7 +44,6 @@ import java.util.TimerTask;
 import java.util.ArrayList;
 import java.util.Random;
 
-import io.github.kexanie.library.MathView;
 
 import static android.view.View.GONE;
 
@@ -174,6 +172,8 @@ public class QuestionPage extends Activity
 		addButtonListener();
 		//addRadioButtonListener();
   	}
+
+
 
 	private boolean storeQuestionNumbers()
 	{
@@ -520,10 +520,9 @@ public class QuestionPage extends Activity
 	  textViewQNum.setText(myString);
 	    
 	    // Set the Question
-	  MathView webViewQuestionText;
+	  MathTextView webViewQuestionText;
 	  webViewQuestionText = findViewById(R.id.webViewQuestionText);
 	  String questionText = question.getQuestion();
-	  webViewQuestionText.setEngine(MathView.Engine.KATEX);
 
 	  webViewQuestionText.setText(questionText);//,"text/html", "UTF-8");
 
@@ -546,7 +545,7 @@ public class QuestionPage extends Activity
 		int id = view.getId();
 		RadioButton button = findViewById(id);
 
-		MathView mathView;
+		MathTextView mathView;
 
 		if (id == R.id.radioOption1) {
 			((RadioButton) view).setChecked(true);
@@ -842,20 +841,17 @@ public class QuestionPage extends Activity
 
 		// to resolve the issue with text not fully shown for 3rd and 4th option
 
-		findViewById(R.id.textViewOption1).invalidate();
+		/*findViewById(R.id.textViewOption1).invalidate();
 		findViewById(R.id.textViewOption1).requestLayout();
 		findViewById(R.id.textViewOption2).invalidate();
 		findViewById(R.id.textViewOption2).requestLayout();
 		findViewById(R.id.textViewOption3).invalidate();
 		findViewById(R.id.textViewOption3).requestLayout();
 		findViewById(R.id.textViewOption4).invalidate();
-		findViewById(R.id.textViewOption4).requestLayout();
+		findViewById(R.id.textViewOption4).requestLayout();*/
 	}
 
-	final String imageHeaderPng = "data:image/png;base64,";
-	final String imageHeaderJpg = "data:image/jpeg;base64,";
-
-	private void setOptionTextOrImage(String option, MathView mathView, RadioButton radioButton)//, ImageView imageViewOption)
+	private void setOptionTextOrImage(String option, MathTextView mathView, RadioButton radioButton)//, ImageView imageViewOption)
 	{
 		mathView.setVisibility(View.VISIBLE);
 		radioButton.setVisibility(View.VISIBLE);
@@ -933,7 +929,7 @@ public class QuestionPage extends Activity
     {
 		tableLayout1.setVisibility(View.VISIBLE);
 		Button buttonSubmit = findViewById(R.id.buttonNext);
-		buttonSubmit.setText("Submit");
+		buttonSubmit.setText(R.string.submit);
 
 		Button exitButton = findViewById(R.id.buttonExitTest);
 		exitButton.setEnabled(false);
@@ -1079,7 +1075,7 @@ WhenAnswerSelected();
 
 	private void submitTest()
 	{
-		clearState(); // Test is completed.. so remove the saved state
+		clearState(); // Test is completed. so remove the saved state
 		openTestReportActivity();
 		finish();
 		showInterstitialAdAd();
