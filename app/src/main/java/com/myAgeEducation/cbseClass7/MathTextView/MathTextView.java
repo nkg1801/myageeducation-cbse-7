@@ -8,6 +8,7 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
+import android.text.Html;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
@@ -457,8 +458,25 @@ public class MathTextView extends FrameLayout {
 
         updatePlainTextTheme();
 
+        /*
+         * Questions may contain HTML tags (like <br>, <strong>, etc.).
+         * We render them using Html.fromHtml while also preserving linkification.
+         */
+        String htmlText = currentText.replace("\n", "<br>");
+        CharSequence spanned;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            spanned = Html.fromHtml(
+                    htmlText,
+                    Html.FROM_HTML_MODE_LEGACY
+            );
+        } else {
+            //noinspection deprecation
+            spanned = Html.fromHtml(htmlText);
+        }
+
         SpannableString spannable =
-                new SpannableString(currentText);
+                new SpannableString(spanned);
 
         Linkify.addLinks(
                 spannable,
@@ -1247,8 +1265,7 @@ public class MathTextView extends FrameLayout {
     // Utilities
     // -------------------------------------------------------------------------
 
-    private static boolean containsMath(
-            @Nullable String value) {
+    private static boolean containsMath(@Nullable String value) {
 
         if (value == null
                 || value.isEmpty()) {
@@ -1261,7 +1278,24 @@ public class MathTextView extends FrameLayout {
                 .find();
     }
 
-    private static String escapeHtml(
+    private static String escapeHtml(@Nullable String value) {
+
+        if (value == null) {
+            return "";
+        }
+
+        /*
+         * We do NOT escape < and > here because the question bank content
+         * may contain intended HTML tags (like <br>, <strong>, etc.)
+         * which should be rendered by the WebView or TextView.
+         */
+        return value
+                .replace("&", "&amp;")
+                .replace("\"", "&quot;")
+                .replace("'", "&#39;");
+    }
+
+    private static String escapeHtmlAttribute(
             @Nullable String value) {
 
         if (value == null) {
@@ -1276,24 +1310,12 @@ public class MathTextView extends FrameLayout {
                 .replace("'", "&#39;");
     }
 
-    private static String escapeHtmlAttribute(
-            @Nullable String value) {
+    private static String formatFloat(float value) {
 
-        return escapeHtml(value);
+        return String.format(Locale.US,"%.2f",value);
     }
 
-    private static String formatFloat(
-            float value) {
-
-        return String.format(
-                Locale.US,
-                "%.2f",
-                value
-        );
-    }
-
-    private static String colorToCss(
-            int color) {
+    private static String colorToCss(int color) {
 
         return String.format(
                 Locale.US,
